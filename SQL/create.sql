@@ -12,7 +12,8 @@ CREATE TABLE User (
 	Firstname varchar(20) NOT NULL,
 	Lastname varchar(20) NOT NULL,
 	Phone varchar(13) NOT NULL,
-	Email varchar(75) NOT NULL
+	Email varchar(75) NOT NULL,
+    Admin bit 
 );
 
 CREATE TABLE League(
@@ -42,6 +43,7 @@ CREATE TABLE Game(
     Scheduled DateTime,
     WinningTeamId int,
     LosingTeamId int,
+    Status varchar(15) NOT NULL DEFAULT 'SCHEDULED',
     FOREIGN KEY (HomeTeamId) REFERENCES Team(Id),
     FOREIGN KEY (AwayTeamId) REFERENCES Team(Id),
     FOREIGN KEY (WinningTeamId) REFERENCES Team(Id),

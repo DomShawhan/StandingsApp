@@ -31,7 +31,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                if(User.FindFirst("Admin").Value != "True")
+                if(User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
                 }
@@ -58,7 +58,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                if(User.FindFirst("UserId").Value != id.ToString() && User.FindFirst("Admin").Value != "True")
+                if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
                 }
@@ -183,7 +183,7 @@ namespace StandingsApp.Controllers
             }
             try
             {
-                if (User.FindFirst("UserId").Value != id.ToString() && User.FindFirst("Admin").Value != "True")
+                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
                 }
@@ -225,7 +225,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                if (User.FindFirst("UserId").Value != id.ToString() && User.FindFirst("Admin").Value != "True")
+                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
                 }

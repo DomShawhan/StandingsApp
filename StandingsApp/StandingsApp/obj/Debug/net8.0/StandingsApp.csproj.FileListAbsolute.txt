@@ -53,3 +53,4 @@ C:\repos\StandingsApp\StandingsApp\StandingsApp\obj\Debug\net8.0\refint\Standing
 C:\repos\StandingsApp\StandingsApp\StandingsApp\obj\Debug\net8.0\StandingsApp.pdb
 C:\repos\StandingsApp\StandingsApp\StandingsApp\obj\Debug\net8.0\StandingsApp.genruntimeconfig.cache
 C:\repos\StandingsApp\StandingsApp\StandingsApp\obj\Debug\net8.0\ref\StandingsApp.dll
+C:\repos\StandingsApp\StandingsApp\StandingsApp\obj\Debug\net8.0\StandingsApp.sourcelink.json
