@@ -47,6 +47,9 @@ namespace StandingsApp
 
             var app = builder.Build();
 
+            app.UseCors(builder =>
+                builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+
             // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();

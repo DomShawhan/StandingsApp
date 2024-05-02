@@ -7,20 +7,28 @@
       "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\leaguescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\controllers\\leaguescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\leaguescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\models\\sadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\models\\sadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\models\\sadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\models\\ef\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\models\\ef\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,20 +50,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Program.cs",
+              "RelativeDocumentMoniker": "StandingsApp\\Program.cs",
+              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Program.cs",
+              "RelativeToolTip": "StandingsApp\\Program.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAADEAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T01:45:38.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\User.cs",
+              "RelativeDocumentMoniker": "StandingsApp\\Models\\EF\\User.cs",
+              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\User.cs",
+              "RelativeToolTip": "StandingsApp\\Models\\EF\\User.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAA0wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T21:31:29.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "StandingsApp\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\UsersController.cs",
               "RelativeToolTip": "StandingsApp\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAANkAAAAAAAAAAAAqwN8AAABAAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwCgAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T01:40:42.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "TeamsController.cs",
               "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\TeamsController.cs",
               "RelativeDocumentMoniker": "StandingsApp\\Controllers\\TeamsController.cs",
@@ -81,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GamesController.cs",
               "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\GamesController.cs",
               "RelativeDocumentMoniker": "StandingsApp\\Controllers\\GamesController.cs",
@@ -94,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "LeaguesController.cs",
               "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\LeaguesController.cs",
               "RelativeDocumentMoniker": "StandingsApp\\Controllers\\LeaguesController.cs",

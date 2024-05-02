@@ -25,16 +25,16 @@ namespace StandingsApp.Controllers
         // Get all users
         // returns a list of users if successfull
         // GET: api/Users
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             try
             {
-                if(User.FindFirst("Admin")?.Value != "True")
+                /*if(User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }
+                }*/
                 return await _context.Users.ToListAsync();
             }
             catch (MySqlException sqlex)
@@ -52,7 +52,7 @@ namespace StandingsApp.Controllers
         // Get user by id
         // returns a single user if successfull
         // GET: api/Users/5
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -172,7 +172,7 @@ namespace StandingsApp.Controllers
 
         // Update a user
         // PUT: api/Users/5
-        [Authorize]
+        //[Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<User>> PutUser(int id, User user)
         {
