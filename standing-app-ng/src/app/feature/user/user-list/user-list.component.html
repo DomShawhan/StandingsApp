@@ -1,1 +1,23 @@
-<p *ngFor="let u of users">{{ u.firstname }} {{ u.lastname }}</p>
+<div class="container">
+    <a routerLink="/user/create">Add a new User</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Username</th>
+                <th class="col">First Name</th>
+                <th class="col">Last Name</th>
+                <th class="col">Email</th>
+                <th class="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <td><a routerLink="/user/detail/{{ u.id }}">{{ u.username }}</a></td>
+                <td>{{ u.firstname }}</td>
+                <td>{{ u.lastname }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.phone }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

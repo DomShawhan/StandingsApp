@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,5 +8,11 @@ import { User } from '../model/user';
 export class SystemService {
   loggedInUser: User = new User();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+
+  userLoggedIn(): boolean {
+    return (this.loggedInUser.id != 0);
+  }
 }

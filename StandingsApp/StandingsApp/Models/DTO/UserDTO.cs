@@ -1,12 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StandingsApp.Models.DTO;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace StandingsApp.Models.EF
+namespace StandingsApp.Models.DTO
 {
-    [Table("User")]
-    public class User
+    public class UserDTO
     {
         [Key]
         public int Id { get; set; }
@@ -14,14 +10,6 @@ namespace StandingsApp.Models.EF
         [Required]
         [StringLength(20)]
         public string Username { get; set; }
-
-        [Required]
-        [StringLength(70)]
-        public string Password { get; set; }
-
-        [StringLength(70)]
-        public string? Salt { get; set; }
-
         [Required]
         [StringLength(20)]
         public string Firstname { get; set; }
@@ -40,10 +28,24 @@ namespace StandingsApp.Models.EF
 
         [Required]
         public bool Admin { get; set; }
-
-        public UserDTO convertToDTO()
+        
+        public UserDTO(
+            int id,
+            string username,
+            string firstname,
+            string lastname,
+            string phone,
+            string email,
+            bool admin
+        )
         {
-            return new UserDTO (Id, Username, Firstname, Lastname, Phone, Email, Admin);
+            Id = id;
+            Username = username;
+            Firstname = firstname;
+            Lastname = lastname;
+            Phone = phone;
+            Email = email;
+            Admin = admin;
         }
     }
 }

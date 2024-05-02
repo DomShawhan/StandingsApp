@@ -2,7 +2,7 @@
 
 namespace StandingsApp.Models.DTO
 {
-    public class LoginDTO
+    public record LoginDTO
     {
         [Required]
         [StringLength(20)]

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -27,7 +26,7 @@ namespace StandingsApp.Controllers
         // GET: api/Users
         //[Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
             try
             {
@@ -35,7 +34,15 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }*/
-                return await _context.Users.ToListAsync();
+
+                List<User> users = await _context.Users.ToListAsync();
+                List<UserDTO> usersDTO = new List<UserDTO>();
+                for(int i = 0; i < users.Count; i++)
+                {
+                    usersDTO.Add(users[i].convertToDTO());
+                }
+
+                return usersDTO;
             }
             catch (MySqlException sqlex)
             {
@@ -54,14 +61,14 @@ namespace StandingsApp.Controllers
         // GET: api/Users/5
         //[Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
             try
             {
-                if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+                /*if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }
+                }*/
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
                 if (user == null)
@@ -70,7 +77,7 @@ namespace StandingsApp.Controllers
                     return NotFound();
                 }
 
-                return user;
+                return user.convertToDTO();
             }
             catch (MySqlException sqlex)
             {
@@ -88,8 +95,9 @@ namespace StandingsApp.Controllers
         // returns the created user if successfull
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<UserDTO>> PostUser(User user)
         {
+            Console.WriteLine(user.Password);
             try
             {
                 user.Salt = SecurePassword.GenerateSalt(18);
@@ -99,7 +107,7 @@ namespace StandingsApp.Controllers
                 await _context.Users.AddAsync(user);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetUser", new { id = user.Id }, user);
+                return CreatedAtAction("GetUser", new { id = user.Id }, user.convertToDTO());
             } 
             catch (MySqlException sqlex)
             {
@@ -143,7 +151,7 @@ namespace StandingsApp.Controllers
 
                     await Request.HttpContext.SignInAsync("Cookies", claimsPrincipal);
 
-                    return Ok(user);
+                    return Ok(user.convertToDTO());
                 }
                 else
                 {
@@ -174,8 +182,9 @@ namespace StandingsApp.Controllers
         // PUT: api/Users/5
         //[Authorize]
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> PutUser(int id, User user)
+        public async Task<ActionResult<UserDTO>> PutUser(int id, User user)
         {
+            Console.WriteLine(id + "   " + user.Id);
             if (id != user.Id)
             {
                 // Returns a 400 Bad Request
@@ -183,15 +192,15 @@ namespace StandingsApp.Controllers
             }
             try
             {
-                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+               /* if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }
+                }*/
                 _context.Entry(user).State = EntityState.Modified;
                 _context.Entry(user).Property(u => u.Password).IsModified = false;
                 _context.Entry(user).Property(u => u.Salt).IsModified = false;
                 await _context.SaveChangesAsync();
-                return user;
+                return user.convertToDTO();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -225,10 +234,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+                /*if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }
+                }*/
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user == null)
                 {

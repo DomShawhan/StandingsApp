@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
+import { UserLogin } from '../model/userlogin';
 
 const URL: String = 'https://localhost:7252/api/users';
 @Injectable({
@@ -13,5 +14,25 @@ export class UserService {
 
   getAllUsers(): Observable<User[]> {
     return this.http.get(URL + '/') as Observable<User[]>;
+  }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get(URL + `/${id}`) as Observable<User>;
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post(URL + '/', user) as Observable<User>;
+  }
+
+  editUser(user: User): Observable<User> {
+    return this.http.put(URL + '/' + user.id, user) as Observable<User>;
+  }
+
+  deleteUser(id: number): Observable<boolean> {
+    return this.http.delete(URL + `/${id}`) as Observable<boolean>;
+  }
+
+  loginUser(userLogin: UserLogin): Observable<User> {
+    return this.http.post(URL + '/login', userLogin) as Observable<User>;
   }
 }
