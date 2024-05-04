@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table">
+        <thead>
+        <tbody>
+            <tr>
+                <td>Name: </td>
+                <td>{{ team.name }}</td>
+            </tr>
+            <tr>
+                <td>Coach: </td>
+                <td>{{ team.coachId }}</td>
+            </tr>
+            <tr>
+                <td>League: </td>
+                <td>{{ team.leagueId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink="/team/edit/{{ team.id }}" class="btn btn-primary">Edit</a>
+    <button class="btn btn-danger ms-2" (click)="delete(team.id)">Delete</button>
+</div>
+

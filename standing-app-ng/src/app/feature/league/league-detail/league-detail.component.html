@@ -1,0 +1,60 @@
+<div class="container">
+    <table class="table">
+        <thead>
+        <tbody>
+            <tr>
+                <td>Name: </td>
+                <td>{{ league.name }}</td>
+            </tr>
+            <tr>
+                <td>Manager: </td>
+                <td>{{ league.managerId }}</td>
+            </tr>
+            <tr>
+                <td>Year: </td>
+                <td>{{ league.year }}</td>
+            </tr>
+            <tr>
+                <td>Birthday Before: </td>
+                <td>{{ league.birthdayBefore | date:'MM/dd/YYYY' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink="/league/edit/{{ league.id }}" class="btn btn-primary">Edit</a>
+    <button class="btn btn-danger ms-2" (click)="delete(league.id)">Delete</button>
+    <br>
+    <a routerLink="/team/create/{{ league.id }}">Add a new Team</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Name</th>
+                <th class="col">Head Coach Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of teams">
+                <td><a routerLink="/team/detail/{{ t.id }}">{{ t.name }}</a></td>
+                <td>{{ t.coachId }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a routerLink="/game/create/{{ league.id }}">Add a new Game</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Home Team</th>
+                <th class="col">Away Team</th>
+                <th class="col">Scheduled</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let g of games">
+                <td><a routerLink="/game/detail/{{ g.id }}">{{ g.homeTeam.id }}</a></td>
+                <td>{{ g.awayTeam.id }}</td>
+                <td>{{ g.scheduled | date:'MM/dd/YYYY' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

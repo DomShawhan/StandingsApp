@@ -1,0 +1,31 @@
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="username">Name: </label>
+                </td>
+                <td>
+                    <input type="text" id="username" [(ngModel)]="league.name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="firstname">Year: </label>
+                </td>
+                <td>
+                    <input type="number" id="firstname" [(ngModel)]="league.year">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="lastname">Birthday Before: </label>
+                </td>
+                <td>
+                    <input type="date" id="lastname" [ngModel]="league.birthdayBefore | date:'yyyy-MM-dd'" (ngModelChange)="league.birthdayBefore = $event">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="save()">{{ buttonText }}</button>
+</div>

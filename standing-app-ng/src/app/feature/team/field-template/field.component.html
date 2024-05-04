@@ -1,0 +1,25 @@
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="username">Name: </label>
+                </td>
+                <td>
+                    <input type="text" id="username" [(ngModel)]="team.name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="coach">Coach: </label>
+                </td>
+                <td>
+                    <select id="coach" [(ngModel)]="team.coachId" [compareWith]="compUser">
+                        <option value="{{ u.id }}" *ngFor="let u of users">{{ u.firstname }} {{ u.lastname }}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="save()">{{ buttonText }}</button>
+</div>

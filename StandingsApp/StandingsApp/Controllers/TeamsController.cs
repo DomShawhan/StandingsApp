@@ -6,6 +6,8 @@ using StandingsApp.Models;
 
 namespace StandingsApp.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController] // converts to and from JSON on API calls
     public class TeamsController : ControllerBase
     {
         private readonly SADbContext _context;
@@ -48,6 +50,33 @@ namespace StandingsApp.Controllers
                 }
 
                 return team;
+            }
+            catch (MySqlException sqlex)
+            {
+                //returns 500 Internal Server Error
+                return Problem($"SQL Error: {sqlex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //returns 500 Internal Server Error
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet("league/{leagueid}")]
+        public async Task<ActionResult<IEnumerable<Team>>> GetTeamByLeagueId(int leagueid)
+        {
+            try
+            {
+                var teams = await _context.Teams.Where(t => t.LeagueId == leagueid).ToListAsync();
+
+                if (teams == null)
+                {
+                    // returns 404 Not Found
+                    return NotFound();
+                }
+
+                return teams;
             }
             catch (MySqlException sqlex)
             {

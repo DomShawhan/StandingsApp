@@ -1,0 +1,21 @@
+<div class="container">
+    <a routerLink="/league/create">Add a new League</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Name</th>
+                <th class="col">Year</th>
+                <th class="col">Manager Id</th>
+                <th class="col">Birthday Before</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of leagues">
+                <td><a routerLink="/league/detail/{{ l.id }}">{{ l.name }}</a></td>
+                <td>{{ l.year }}</td>
+                <td>{{ l.managerId }}</td>
+                <td>{{ l.birthdayBefore | date:'MM/dd/YYYY' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

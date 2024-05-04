@@ -4,7 +4,7 @@ import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { UserLogin } from '../model/userlogin';
 
-const URL: String = 'https://localhost:7252/api/users';
+const URL: string = 'https://localhost:7252/api/users';
 @Injectable({
   providedIn: 'root'
 })

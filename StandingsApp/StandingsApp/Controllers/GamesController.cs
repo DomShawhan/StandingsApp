@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using StandingsApp.Models;
 using StandingsApp.Models.EF;
+using StandingsApp.Utilities;
 
 namespace StandingsApp.Controllers
 {
@@ -41,7 +42,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                var game = await _context.Games.FirstOrDefaultAsync(g => g.Id == id);
+                var game = await _context.Games
+                    .Include(g => g.HomeTeam)
+                    .Include(g => g.AwayTeam)
+                    .FirstOrDefaultAsync(g => g.Id == id);
 
                 if (game == null)
                 {
@@ -63,11 +67,49 @@ namespace StandingsApp.Controllers
             }
         }
 
+        [HttpGet("league/{leagueid}")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetGameByLeagueId(int leagueid)
+        {
+            try
+            {
+                var games = await _context.Games
+                    .Include(g => g.HomeTeam)
+                    .Include(g => g.AwayTeam)
+                    .Where(g => g.HomeTeam!.LeagueId == leagueid).ToListAsync();
+
+                if (games == null)
+                {
+                    // returns 404 Not Found
+                    return NotFound();
+                }
+
+                return games;
+            }
+            catch (MySqlException sqlex)
+            {
+                //returns 500 Internal Server Error
+                return Problem($"SQL Error: {sqlex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //returns 500 Internal Server Error
+                return Problem(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<Game>> PostGame(Game game)
         {
             try
             {
+                game.HomeTeam = null;
+                game.AwayTeam = null;
+
+                game.WinningTeamId = null;
+                game.LosingTeamId = null;
+
+                game.Status = GameStatuses.NEW;
+
                 await _context.Games.AddAsync(game);
                 await _context.SaveChangesAsync();
 

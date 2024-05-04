@@ -1,0 +1,35 @@
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="homeTeam">Home Team: </label>
+                </td>
+                <td>
+                    <select id="homeTeam" [(ngModel)]="game.homeTeam" [compareWith]="compTeam">
+                        <option [ngValue]="t" *ngFor="let t of teams">{{ t.name }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="awayTeam">Away Team: </label>
+                </td>
+                <td>
+                    <select id="awayTeam" [(ngModel)]="game.awayTeam" [compareWith]="compTeam">
+                        <option [ngValue]="t" *ngFor="let t of teams">{{ t.name }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="scheduled">Scheduled: </label>
+                </td>
+                <td>
+                    <input type="date" id="scheduled" [ngModel]="game.scheduled | date:'yyyy-MM-dd'" (ngModelChange)="game.scheduled = $event">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="save()">{{ buttonText }}</button>
+</div>

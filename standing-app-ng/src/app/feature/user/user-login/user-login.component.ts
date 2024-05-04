@@ -25,6 +25,8 @@ export class UserLoginComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.userLogin.username = '';
+    this.userLogin.password = '';
     this.sysSvc.loggedInUser = new User();
   }
 

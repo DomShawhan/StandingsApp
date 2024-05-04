@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table">
+        <thead>
+        <tbody>
+            <tr>
+                <td>Away Team: </td>
+                <td>{{ game.awayTeam.name }}</td>
+            </tr>
+            <tr>
+                <td>Home Team: </td>
+                <td>{{ game.homeTeam.name }}</td>
+            </tr>
+            <tr>
+                <td>Away Score: </td>
+                <td>{{ game.awayScore }}</td>
+            </tr>
+            <tr>
+                <td>Home Score: </td>
+                <td>{{ game.homeScore }}</td>
+            </tr>
+            <tr>
+                <td>Scheduled: </td>
+                <td>{{ game.scheduled | date:'MM/dd/YYYY' }}</td>
+            </tr>
+            <tr>
+                <td>Status: </td>
+                <td>{{ game.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink="/game/edit/{{ game.id }}" class="btn btn-primary">Edit</a>
+    <button class="btn btn-danger ms-2" (click)="delete(game.id)">Delete</button>
+</div>

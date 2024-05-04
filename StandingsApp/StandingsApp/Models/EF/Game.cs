@@ -22,11 +22,15 @@ namespace StandingsApp.Models.EF
 
         public DateTime Scheduled { get; set; }
 
-        public int WinningTeamId { get; set; }
+        public int? WinningTeamId { get; set; }
 
-        public int LosingTeamId { get; set; }
+        public int? LosingTeamId { get; set; }
 
         [Required, StringLength(15)]
         public string Status { get; set; } = GameStatuses.NEW;
+
+        // navigation properties
+        public virtual Team? HomeTeam { get; set; }
+        public virtual Team? AwayTeam { get; set; }
     }
 }
