@@ -18,5 +18,8 @@ namespace StandingsApp.Models.EF
 
         [Required]
         public int LeagueId { get; set; }
+
+        public virtual User? Coach { get; set; }
+        public virtual League? League { get; set; }
     }
 }

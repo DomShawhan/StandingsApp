@@ -26,6 +26,7 @@ export class LeagueListComponent extends BaseComponent {
     this.leagueSvc.getAllLeagues().subscribe({
       next: (resp) => {
         this.leagues = resp;
+        this.leagues.forEach((l) => {console.log(l)});
       },
       error: (err) => {
         this.message = err;

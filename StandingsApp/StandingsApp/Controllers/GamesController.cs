@@ -23,7 +23,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                return await _context.Games.ToListAsync();
+                return await _context.Games
+                    .Include(g => g.HomeTeam)
+                    .Include(g => g.AwayTeam)
+                    .ToListAsync();
             }
             catch (MySqlException sqlex)
             {

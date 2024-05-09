@@ -22,5 +22,7 @@ namespace StandingsApp.Models.EF
         [Required]
         public int ManagerId { get; set; }
 
+        public virtual User? Manager { get; set; }
+
     }
 }

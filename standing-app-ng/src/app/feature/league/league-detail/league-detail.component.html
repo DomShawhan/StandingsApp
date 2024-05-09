@@ -8,7 +8,7 @@
             </tr>
             <tr>
                 <td>Manager: </td>
-                <td>{{ league.managerId }}</td>
+                <td>{{ league.manager.firstname }} {{ league.manager.lastname }}</td>
             </tr>
             <tr>
                 <td>Year: </td>
@@ -29,13 +29,13 @@
         <thead>
             <tr>
                 <th class="col">Name</th>
-                <th class="col">Head Coach Id</th>
+                <th class="col">Head Coach</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let t of teams">
                 <td><a routerLink="/team/detail/{{ t.id }}">{{ t.name }}</a></td>
-                <td>{{ t.coachId }}</td>
+                <td>{{ t.coach.firstname }} {{ t.coach.lastname }}</td>
             </tr>
         </tbody>
     </table>
@@ -51,8 +51,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let g of games">
-                <td><a routerLink="/game/detail/{{ g.id }}">{{ g.homeTeam.id }}</a></td>
-                <td>{{ g.awayTeam.id }}</td>
+                <td><a routerLink="/game/detail/{{ g.id }}">{{ g.homeTeam.name }}</a></td>
+                <td>{{ g.awayTeam.name }}</td>
                 <td>{{ g.scheduled | date:'MM/dd/YYYY' }}</td>
             </tr>
         </tbody>

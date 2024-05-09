@@ -22,7 +22,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                return await _context.Teams.ToListAsync();
+                return await _context.Teams
+                    .Include(t => t.League)
+                    .Include(t => t.Coach)
+                    .ToListAsync();
             }
             catch (MySqlException sqlex)
             {
@@ -41,7 +44,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                var team = await _context.Teams.FirstOrDefaultAsync(g => g.Id == id);
+                var team = await _context.Teams
+                    .Include(t => t.League)
+                    .Include(t => t.Coach)
+                    .FirstOrDefaultAsync(g => g.Id == id);
 
                 if (team == null)
                 {
@@ -68,7 +74,10 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                var teams = await _context.Teams.Where(t => t.LeagueId == leagueid).ToListAsync();
+                var teams = await _context.Teams
+                    .Include(t => t.League)
+                    .Include(t => t.Coach)
+                    .Where(t => t.LeagueId == leagueid).ToListAsync();
 
                 if (teams == null)
                 {
@@ -95,6 +104,8 @@ namespace StandingsApp.Controllers
         {
             try
             {
+                team.Coach = null;
+                team.League = null;
                 await _context.Teams.AddAsync(team);
                 await _context.SaveChangesAsync();
 
@@ -119,6 +130,8 @@ namespace StandingsApp.Controllers
             }
             try
             {
+                team.Coach = null;
+                team.League = null;
                 _context.Entry(team).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return team;

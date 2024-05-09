@@ -5,7 +5,7 @@
             <tr>
                 <th class="col">Name</th>
                 <th class="col">Year</th>
-                <th class="col">Manager Id</th>
+                <th class="col">Manager</th>
                 <th class="col">Birthday Before</th>
             </tr>
         </thead>
@@ -13,7 +13,7 @@
             <tr *ngFor="let l of leagues">
                 <td><a routerLink="/league/detail/{{ l.id }}">{{ l.name }}</a></td>
                 <td>{{ l.year }}</td>
-                <td>{{ l.managerId }}</td>
+                <td>{{ l.manager.firstname }} {{ l.manager.lastname }}</td>
                 <td>{{ l.birthdayBefore | date:'MM/dd/YYYY' }}</td>
             </tr>
         </tbody>

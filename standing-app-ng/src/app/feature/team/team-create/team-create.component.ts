@@ -6,6 +6,7 @@ import { SystemService } from '../../../service/system.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../service/user.service';
 import { User } from '../../../model/user';
+import { LeagueService } from '../../../service/league.service';
 
 @Component({
   selector: 'app-team-create',
@@ -20,6 +21,7 @@ export class TeamCreateComponent extends BaseComponent {
   constructor(
     private teamSvc: TeamService,
     private userSvc: UserService,
+    private leagueSvc: LeagueService,
     sysSvc: SystemService,
     router: Router,
     private route: ActivatedRoute
@@ -28,6 +30,9 @@ export class TeamCreateComponent extends BaseComponent {
   }
 
   save(): void {
+    this.team.coachId = this.team.coach.id;
+    this.team.coach.password = '123';
+    this.team.leagueId = this.team.league.id;
     console.log(this.team)
     this.teamSvc.createTeam(this.team).subscribe({
       next: (resp) => {
@@ -47,6 +52,15 @@ export class TeamCreateComponent extends BaseComponent {
     this.route.params.subscribe({
       next: (parms) => {
         this.team.leagueId = parms['leagueid'];
+        this.leagueSvc.getLeagueById(this.team.leagueId).subscribe({
+          next: (resp) => {
+            this.team.league = resp;
+          },
+          error: (err) => {
+            this.message = err;
+          },
+          complete: () => {}
+        });
       },
       error: (err) => {
         this.message = err;

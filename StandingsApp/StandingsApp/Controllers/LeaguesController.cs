@@ -21,7 +21,7 @@ namespace StandingsApp.Controllers
         public async Task<ActionResult<IEnumerable<League>>> GetLeagues() {
             try
             {
-                return await _context.Leagues.ToListAsync();
+                return await _context.Leagues.Include(l => l.Manager).ToListAsync();
             }
             catch (MySqlException sqlex)
             {
@@ -40,7 +40,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
-                var league = await _context.Leagues.FirstOrDefaultAsync(l => l.Id == id);
+                var league = await _context.Leagues.Include(l => l.Manager).FirstOrDefaultAsync(l => l.Id == id);
 
                 if (league == null)
                 {
@@ -67,6 +67,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
+                league.Manager = null;
                 await _context.Leagues.AddAsync(league);
                 await _context.SaveChangesAsync();
 
@@ -91,6 +92,7 @@ namespace StandingsApp.Controllers
             }
             try
             {
+                league.Manager = null;
                 _context.Entry(league).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return league;

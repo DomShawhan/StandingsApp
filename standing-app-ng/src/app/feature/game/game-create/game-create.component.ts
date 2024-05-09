@@ -32,7 +32,6 @@ export class GameCreateComponent extends BaseComponent {
     this.game.awayTeamId = this.game.awayTeam.id;
     this.game.homeTeamId = this.game.homeTeam.id;
     this.game.status = 'NEW';
-    console.log(this.game)
     this.gameSvc.createGame(this.game).subscribe({
       next: (resp) => {
         this.game = resp;

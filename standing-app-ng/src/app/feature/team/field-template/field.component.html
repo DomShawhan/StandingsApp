@@ -14,8 +14,8 @@
                     <label for="coach">Coach: </label>
                 </td>
                 <td>
-                    <select id="coach" [(ngModel)]="team.coachId" [compareWith]="compUser">
-                        <option value="{{ u.id }}" *ngFor="let u of users">{{ u.firstname }} {{ u.lastname }}</option>
+                    <select id="coach" [(ngModel)]="team.coach" [compareWith]="compUser">
+                        <option [ngValue]="u" *ngFor="let u of users">{{ u.firstname }} {{ u.lastname }}</option>
                     </select>
                 </td>
             </tr>

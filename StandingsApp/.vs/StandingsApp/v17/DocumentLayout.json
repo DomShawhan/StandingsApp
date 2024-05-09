@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\repos\\StandingsApp\\StandingsApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\models\\ef\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\models\\ef\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|C:\\repos\\StandingsApp\\StandingsApp\\standingsapp\\models\\ef\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\models\\ef\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\leaguescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\leaguescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|c:\\repos\\standingsapp\\standingsapp\\standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAD99F3-856A-44B0-997B-53CF601012E4}|StandingsApp\\StandingsApp.csproj|solutionrelative:standingsapp\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,67 +34,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\Game.cs",
-              "RelativeDocumentMoniker": "StandingsApp\\Models\\EF\\Game.cs",
-              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\Game.cs",
-              "RelativeToolTip": "StandingsApp\\Models\\EF\\Game.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T17:56:39.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GamesController.cs",
-              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\GamesController.cs",
-              "RelativeDocumentMoniker": "StandingsApp\\Controllers\\GamesController.cs",
-              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\GamesController.cs",
-              "RelativeToolTip": "StandingsApp\\Controllers\\GamesController.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAwwC8AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T17:52:37.466Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "StandingsApp\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "StandingsApp\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T19:52:37.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "TeamsController.cs",
               "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\TeamsController.cs",
               "RelativeDocumentMoniker": "StandingsApp\\Controllers\\TeamsController.cs",
               "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\TeamsController.cs",
               "RelativeToolTip": "StandingsApp\\Controllers\\TeamsController.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAwwEEAAAAIAAAA",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T19:20:05.708Z",
+              "WhenOpened": "2024-05-09T01:24:26.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Team.cs",
-              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\Team.cs",
-              "RelativeDocumentMoniker": "StandingsApp\\Models\\EF\\Team.cs",
-              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Models\\EF\\Team.cs",
-              "RelativeToolTip": "StandingsApp\\Models\\EF\\Team.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAApAAAA",
+              "DocumentIndex": 2,
+              "Title": "GamesController.cs",
+              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\GamesController.cs",
+              "RelativeDocumentMoniker": "StandingsApp\\Controllers\\GamesController.cs",
+              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\GamesController.cs",
+              "RelativeToolTip": "StandingsApp\\Controllers\\GamesController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAowAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T17:56:46.392Z"
+              "WhenOpened": "2024-05-09T01:12:27.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaguesController.cs",
+              "DocumentMoniker": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\LeaguesController.cs",
+              "RelativeDocumentMoniker": "StandingsApp\\Controllers\\LeaguesController.cs",
+              "ToolTip": "C:\\repos\\StandingsApp\\StandingsApp\\StandingsApp\\Controllers\\LeaguesController.cs",
+              "RelativeToolTip": "StandingsApp\\Controllers\\LeaguesController.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAcwEcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T01:10:04.494Z",
+              "EditorCaption": ""
             }
           ]
         }
