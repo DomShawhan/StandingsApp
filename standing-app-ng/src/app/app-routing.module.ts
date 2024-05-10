@@ -15,6 +15,7 @@ import { TeamEditComponent } from './feature/team/team-edit/team-edit.component'
 import { GameCreateComponent } from './feature/game/game-create/game-create.component';
 import { GameDetailComponent } from './feature/game/game-detail/game-detail.component';
 import { GameEditComponent } from './feature/game/game-edit/game-edit.component';
+import { GameScoreComponent } from './feature/game/game-score/game-score.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch:'full'},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'game/create/:leagueid', component: GameCreateComponent},
   {path: 'game/detail/:id', component: GameDetailComponent},
   {path: 'game/edit/:id', component: GameEditComponent},
+  {path: 'game/score/:id', component: GameScoreComponent},
   {path: '**', component: UserListComponent}
 ];
 

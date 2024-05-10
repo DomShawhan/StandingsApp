@@ -128,6 +128,50 @@ namespace StandingsApp.Controllers
             }
         }
 
+        [HttpPost("score/{id}")]
+        public async Task<ActionResult<Game>> PostGameScore(int id, [FromBody] Game game)
+        {
+            if (id != game.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var gameInDb = await _context.Games.FirstOrDefaultAsync(g => g.Id == id);
+                if (gameInDb == null || gameInDb.Status == GameStatuses.COMPLETED)
+                {
+                    return NotFound();
+                }
+                gameInDb.AwayScore = game.AwayScore;
+                gameInDb.HomeScore = game.HomeScore;
+                if(game.AwayScore > game.HomeScore)
+                {
+                    gameInDb.WinningTeamId = game.AwayTeamId;
+                    gameInDb.LosingTeamId = game.HomeTeamId;
+                } 
+                else if (game.HomeScore > game.AwayScore)
+                {
+                    gameInDb.LosingTeamId = game.AwayTeamId;
+                    gameInDb.WinningTeamId = game.HomeTeamId;
+                }
+
+                gameInDb.Status = GameStatuses.COMPLETED;
+                _context.Entry(gameInDb).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return gameInDb;
+            }
+            catch (MySqlException sqlex)
+            {
+                //returns 500 Internal Server Error
+                return Problem($"SQL Error: {sqlex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //returns 500 Internal Server Error
+                return Problem(ex.Message);
+            }
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Game>> PutGame(int id, Game game)
         {

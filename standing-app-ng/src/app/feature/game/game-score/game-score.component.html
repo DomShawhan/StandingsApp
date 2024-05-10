@@ -1,0 +1,39 @@
+<div class="container" *ngIf="game.status != 'COMPLETED'">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="homeTeam">Home Team: </label>
+                </td>
+                <td>
+                    <input type="text" value="{{ game.homeTeam.name }}" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="awayTeam">Away Team: </label>
+                </td>
+                <td>
+                    <input type="text" value="{{ game.awayTeam.name }}" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="homeTeamScore">Home Team Score: </label>
+                </td>
+                <td>
+                    <input type="number" step="1" id="homeTeamScore" [(ngModel)]="game.homeScore" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="awayTeamScore">Away Team Score: </label>
+                </td>
+                <td>
+                    <input type="number" step="1" id="awayTeamScore" [(ngModel)]="game.awayScore" >
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="save()">{{ buttonText }}</button>
+</div>

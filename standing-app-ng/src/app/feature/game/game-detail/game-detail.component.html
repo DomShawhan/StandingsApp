@@ -29,6 +29,7 @@
         </tbody>
     </table>
 
-    <a routerLink="/game/edit/{{ game.id }}" class="btn btn-primary">Edit</a>
+    <a routerLink="/game/edit/{{ game.id }}" *ngIf="game.status != 'COMPLETED'" class="btn btn-primary">Edit</a>
+    <a routerLink="/game/score/{{ game.id }}" *ngIf="game.status != 'COMPLETED'" class="btn btn-primary ms-2">Score</a>
     <button class="btn btn-danger ms-2" (click)="delete(game.id)">Delete</button>
 </div>

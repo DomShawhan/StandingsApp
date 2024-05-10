@@ -46,6 +46,8 @@
             <tr>
                 <th class="col">Home Team</th>
                 <th class="col">Away Team</th>
+                <th class="col">Home Score</th>
+                <th class="col">Away Score</th>
                 <th class="col">Scheduled</th>
             </tr>
         </thead>
@@ -53,6 +55,8 @@
             <tr *ngFor="let g of games">
                 <td><a routerLink="/game/detail/{{ g.id }}">{{ g.homeTeam.name }}</a></td>
                 <td>{{ g.awayTeam.name }}</td>
+                <td>{{ g.homeScore }}</td>
+                <td>{{ g.awayScore }}</td>
                 <td>{{ g.scheduled | date:'MM/dd/YYYY' }}</td>
             </tr>
         </tbody>

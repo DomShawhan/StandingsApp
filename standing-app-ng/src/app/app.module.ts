@@ -22,6 +22,7 @@ import { TeamEditComponent } from './feature/team/team-edit/team-edit.component'
 import { GameDetailComponent } from './feature/game/game-detail/game-detail.component';
 import { GameCreateComponent } from './feature/game/game-create/game-create.component';
 import { GameEditComponent } from './feature/game/game-edit/game-edit.component';
+import { GameScoreComponent } from './feature/game/game-score/game-score.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { GameEditComponent } from './feature/game/game-edit/game-edit.component'
     TeamEditComponent,
     GameDetailComponent,
     GameCreateComponent,
-    GameEditComponent
+    GameEditComponent,
+    GameScoreComponent
   ],
   imports: [
     BrowserModule,

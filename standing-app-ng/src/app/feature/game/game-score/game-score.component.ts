@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../base/base.component';
-import { Team } from '../../../model/team';
 import { Game } from '../../../model/game';
-import { TeamService } from '../../../service/team.service';
+import { Team } from '../../../model/team';
 import { GameService } from '../../../service/game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SystemService } from '../../../service/system.service';
 
 @Component({
-  selector: 'app-game-edit',
-  templateUrl: '../field-template/field.component.html',
-  styleUrl: './game-edit.component.css'
+  selector: 'app-game-score',
+  templateUrl: './game-score.component.html',
+  styleUrl: './game-score.component.css'
 })
-export class GameEditComponent extends BaseComponent {
+export class GameScoreComponent extends BaseComponent {
   game:  Game = new Game();
   gameId: number = 0;
   buttonText: string = 'Edit';
-  teams: Team[] = [];
 
   constructor(
-    private teamSvc: TeamService,
     private gameSvc: GameService,
     router: Router,
     sysSvc: SystemService,
@@ -39,15 +36,6 @@ export class GameEditComponent extends BaseComponent {
             if(this.game.status == 'COMPLETED') {
               this.router.navigateByUrl('/game/detail/' + this.game.id);
             }
-            this.teamSvc.getTeamsByLeagueId(this.game.homeTeam.leagueId).subscribe({
-              next: (resp) => {
-                this.teams = resp;
-              },
-              error: (err) => {
-                this.message = err;
-              },
-              complete: () => {}
-            });
           },
           error: (err) => {
             this.message = err;
@@ -63,9 +51,7 @@ export class GameEditComponent extends BaseComponent {
   }
 
   save(): void {
-    this.game.awayTeamId = this.game.awayTeam.id;
-    this.game.homeTeamId = this.game.homeTeam.id;
-    this.gameSvc.editGame(this.game).subscribe({
+    this.gameSvc.setGameScore(this.game).subscribe({
       next: (resp) => {
         this.game = resp;
         this.router.navigateByUrl('/game/detail/' + this.game.id);
