@@ -100,6 +100,36 @@ namespace StandingsApp.Controllers
             }
         }
 
+        [HttpGet("team/{teamid}")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetGamesByTeamId(int teamid)
+        {
+            try
+            {
+                var games = await _context.Games
+                    .Include(g => g.HomeTeam)
+                    .Include(g => g.AwayTeam)
+                    .Where(g => g.HomeTeamId == teamid || g.AwayTeamId == teamid).ToListAsync();
+
+                if (games == null)
+                {
+                    // returns 404 Not Found
+                    return NotFound();
+                }
+
+                return games;
+            }
+            catch (MySqlException sqlex)
+            {
+                //returns 500 Internal Server Error
+                return Problem($"SQL Error: {sqlex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //returns 500 Internal Server Error
+                return Problem(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<Game>> PostGame(Game game)
         {

@@ -22,6 +22,10 @@ export class GameService {
     return this.http.get(URL + `/league/${leagueid}`) as Observable<Game[]>;
   }
 
+  getGamesByTeamId(teamid: number): Observable<Game[]> {
+    return this.http.get(URL + `/team/${teamid}`) as Observable<Game[]>;
+  }
+
   createGame(game: Game): Observable<Game> {
     return this.http.post(URL + '/', game) as Observable<Game>;
   }

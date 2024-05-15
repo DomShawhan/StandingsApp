@@ -19,5 +19,24 @@
 
     <a routerLink="/team/edit/{{ team.id }}" class="btn btn-primary">Edit</a>
     <button class="btn btn-danger ms-2" (click)="delete(team.id)">Delete</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Oponent</th>
+                <th class="col">Home Score</th>
+                <th class="col">Away Score</th>
+                <th class="col">Scheduled</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let g of games">
+                <td><a routerLink="/game/detail/{{ g.id }}">{{ g.homeTeamId == teamId ? g.homeTeam.name : "@ " + g.awayTeam.name }}</a></td>
+                <td>{{ g.homeScore }}</td>
+                <td>{{ g.awayScore }}</td>
+                <td>{{ g.scheduled | date:'MM/dd/YYYY' }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
