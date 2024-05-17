@@ -26,6 +26,23 @@
                 <td>Status: </td>
                 <td>{{ game.status }}</td>
             </tr>
+            <tr>
+                <td>Park Name: </td>
+                <td>{{ game.parkName }}</td>
+            </tr>
+            <tr>
+                <td>Address: </td>
+                <td>
+                    <p>
+                        {{ game.addressLine }}<br>
+                        {{ game.city }}, {{ game.state }} {{ game.zip }}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Field Nbr: </td>
+                <td>{{ game.fieldNbr }}</td>
+            </tr>
         </tbody>
     </table>
 

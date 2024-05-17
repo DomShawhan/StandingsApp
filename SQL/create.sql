@@ -48,4 +48,12 @@ CREATE TABLE Game(
     FOREIGN KEY (AwayTeamId) REFERENCES Team(Id),
     FOREIGN KEY (WinningTeamId) REFERENCES Team(Id),
     FOREIGN KEY (LosingTeamId) REFERENCES Team(Id)
-)
+);
+
+ALTER TABLE Game
+ADD ParkName varchar(50),
+ADD FieldNbr int,
+ADD AddressLine varchar(125),
+ADD City varchar(50),
+ADD State varchar(2),
+ADD Zip varchar(10)

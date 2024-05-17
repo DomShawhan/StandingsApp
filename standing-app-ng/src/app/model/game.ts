@@ -10,6 +10,12 @@ export class Game {
     winningTeamId: number;
     losingTeamId: number;
     status: string;
+    fieldNbr: number;
+    addressLine: string;
+    parkName: string;
+    city: string;
+    state: string;
+    zip: string;
     homeTeam: Team;
     awayTeam: Team;
 
@@ -23,6 +29,12 @@ export class Game {
         winningTeamId: number = 0,
         losingTeamId: number = 0,
         status: string = '',
+        fieldNbr: number = 0,
+        addressLine: string = '',
+        city: string = '',
+        state: string = '',
+        zip: string = '',
+        parkName: string = '',
         homeTeam: Team = new Team(),
         awayTeam: Team = new Team()
     ){
@@ -37,5 +49,11 @@ export class Game {
         this.status = status;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
+        this.fieldNbr = fieldNbr;
+        this.addressLine = addressLine;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.parkName = parkName;
     }
 }

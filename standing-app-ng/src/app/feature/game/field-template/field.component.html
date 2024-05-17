@@ -29,6 +29,54 @@
                     <input type="date" id="scheduled" [ngModel]="game.scheduled | date:'yyyy-MM-dd'" (ngModelChange)="game.scheduled = $event">
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <label for="parkName">Park Name: </label>
+                </td>
+                <td>
+                    <input type="text" id="parkName" [(ngModel)]="game.parkName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="addressLine">Address: </label>
+                </td>
+                <td>
+                    <input type="text" id="addressLine" [(ngModel)]="game.addressLine">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="city">City: </label>
+                </td>
+                <td>
+                    <input type="text" id="city" [(ngModel)]="game.city">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="state">State: </label>
+                </td>
+                <td>
+                    <input type="text" id="state" [(ngModel)]="game.state">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zip">Zip Code: </label>
+                </td>
+                <td>
+                    <input type="text" id="zip" [(ngModel)]="game.zip">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fieldNbr">Field Number: </label>
+                </td>
+                <td>
+                    <input type="number" id="fieldNbr" [(ngModel)]="game.fieldNbr">
+                </td>
+            </tr>
         </tbody>
     </table>
     <button class="btn btn-primary" (click)="save()">{{ buttonText }}</button>
