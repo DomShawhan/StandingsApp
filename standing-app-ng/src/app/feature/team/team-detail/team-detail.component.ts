@@ -6,6 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SystemService } from '../../../service/system.service';
 import { GameService } from '../../../service/game.service';
 import { Game } from '../../../model/game';
+import { PlayerService } from '../../../service/player.service';
+import { Player } from '../../../model/player';
+import { stat } from 'fs';
 
 @Component({
   selector: 'app-team-detail',
@@ -16,10 +19,12 @@ export class TeamDetailComponent extends BaseComponent {
   team: Team = new Team();
   teamId: number = 0;
   games: Game[] = [];
+  players: Player[] = [];
 
   constructor(
     private teamSvc: TeamService,
     private gameSvc: GameService,
+    private playerSvc: PlayerService,
     private route: ActivatedRoute,
     sysSvc: SystemService,
     router: Router
@@ -51,6 +56,16 @@ export class TeamDetailComponent extends BaseComponent {
           },
           complete: () => {}
         });
+        this.playerSvc.getPlayersByTeam(this.teamId).subscribe({
+          next: (resp) => {
+            console.log(resp)
+            this.players = resp;
+          },
+          error: (err) => {
+            this.message = err;
+          },
+          complete: () => {}
+        });
       },
       error: (err) => {
         this.message = err;
@@ -73,5 +88,5 @@ export class TeamDetailComponent extends BaseComponent {
       },
       complete: () => {}
     });
-  } 
+  }
 }

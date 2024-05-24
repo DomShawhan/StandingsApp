@@ -27,6 +27,7 @@
                 <th class="col">Home Score</th>
                 <th class="col">Away Score</th>
                 <th class="col">Scheduled</th>
+                <th class="col">Park Name</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,28 @@
                 <td>{{ g.awayScore }}</td>
                 <td>{{ g.scheduled | date:'MM/dd/YYYY' }}</td>
                 <td>{{ g.parkName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a routerLink="/player/create/{{ team.id }}" class="btn btn-primary">Add a player</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Name</th>
+                <th class="col">Birthday</th>
+                <th class="col">Age</th>
+                <th class="col">Bats</th>
+                <th class="col">Throws</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of players">
+                <td><a routerLink="/player/detail/{{ p.id }}">{{ p.firstname + ' ' + p.lastname }}</a></td>
+                <td>{{ p.birthday | date: "MM/dd/YYYY" }}</td>
+                <td>{{ p.birthday | getAge }}</td>
+                <td>{{ p.bats | playerHand }}</td>
+                <td>{{ p.throws | playerHand }}</td>
             </tr>
         </tbody>
     </table>

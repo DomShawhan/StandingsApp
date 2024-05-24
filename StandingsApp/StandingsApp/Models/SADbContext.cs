@@ -9,6 +9,7 @@ namespace StandingsApp.Models
         public DbSet<Game> Games { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<League> Leagues { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         public SADbContext(DbContextOptions<SADbContext> options) : base(options) { }
     }

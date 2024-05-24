@@ -56,4 +56,17 @@ ADD FieldNbr int,
 ADD AddressLine varchar(125),
 ADD City varchar(50),
 ADD State varchar(2),
-ADD Zip varchar(10)
+ADD Zip varchar(10);
+
+CREATE TABLE Player(
+	Id int PRIMARY KEY AUTO_INCREMENT,
+    Firstname varchar(20) NOT NULL,
+	Lastname varchar(20) NOT NULL,
+    Birthday date NOT NULL,
+    TeamId int NOT NULL,
+    Bats char(1) NULL,
+    Throws char(1) NULL,
+    FOREIGN KEY (TeamId) REFERENCES Team(Id)
+);
+
+

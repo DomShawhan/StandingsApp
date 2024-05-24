@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StandingsApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20ed606a844b2f1c63736cafdf6a4e2002748999")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6ae478ca1942baf2e07490cdee32ee39c912f74")]
 [assembly: System.Reflection.AssemblyProductAttribute("StandingsApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StandingsApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

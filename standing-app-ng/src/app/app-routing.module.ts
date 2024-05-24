@@ -16,6 +16,9 @@ import { GameCreateComponent } from './feature/game/game-create/game-create.comp
 import { GameDetailComponent } from './feature/game/game-detail/game-detail.component';
 import { GameEditComponent } from './feature/game/game-edit/game-edit.component';
 import { GameScoreComponent } from './feature/game/game-score/game-score.component';
+import { PlayerCreateComponent } from './feature/player/player-create/player-create.component';
+import { PlayerDetailComponent } from './feature/player/player-detail/player-detail.component';
+import { PlayerEditComponent } from './feature/player/player-edit/player-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch:'full'},
@@ -36,6 +39,9 @@ const routes: Routes = [
   {path: 'game/detail/:id', component: GameDetailComponent},
   {path: 'game/edit/:id', component: GameEditComponent},
   {path: 'game/score/:id', component: GameScoreComponent},
+  {path: 'player/create/:teamid', component: PlayerCreateComponent},
+  {path: 'player/detail/:id', component: PlayerDetailComponent},
+  {path: 'player/edit/:id', component: PlayerEditComponent},
   {path: '**', component: UserListComponent}
 ];
 

@@ -23,6 +23,11 @@ import { GameDetailComponent } from './feature/game/game-detail/game-detail.comp
 import { GameCreateComponent } from './feature/game/game-create/game-create.component';
 import { GameEditComponent } from './feature/game/game-edit/game-edit.component';
 import { GameScoreComponent } from './feature/game/game-score/game-score.component';
+import { PlayerCreateComponent } from './feature/player/player-create/player-create.component';
+import { PlayerEditComponent } from './feature/player/player-edit/player-edit.component';
+import { PlayerDetailComponent } from './feature/player/player-detail/player-detail.component';
+import { GetAgePipe } from './pipe/get-age.pipe';
+import { PlayerHandPipe } from './pipe/player-hand.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { GameScoreComponent } from './feature/game/game-score/game-score.compone
     GameDetailComponent,
     GameCreateComponent,
     GameEditComponent,
-    GameScoreComponent
+    GameScoreComponent,
+    PlayerCreateComponent,
+    PlayerEditComponent,
+    PlayerDetailComponent,
+    GetAgePipe,
+    PlayerHandPipe
   ],
   imports: [
     BrowserModule,
