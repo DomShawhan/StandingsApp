@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using StandingsApp.Models.EF;
 using StandingsApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StandingsApp.Controllers
 {
@@ -98,12 +99,17 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
             try
             {
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 team.Coach = null;
                 team.League = null;
                 await _context.Teams.AddAsync(team);
@@ -120,7 +126,7 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<Team>> PutTeam(int id, Team team)
         {
@@ -130,6 +136,11 @@ namespace StandingsApp.Controllers
             }
             try
             {
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 team.Coach = null;
                 team.League = null;
                 _context.Entry(team).State = EntityState.Modified;
@@ -159,12 +170,17 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeleteTeam(int id)
         {
             try
             {
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 var team = await _context.Teams.FirstOrDefaultAsync(u => u.Id == id);
                 if (team == null)
                 {

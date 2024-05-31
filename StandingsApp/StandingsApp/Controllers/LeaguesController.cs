@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using StandingsApp.Models;
@@ -61,7 +62,7 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<League>> PostLeague(League league)
         {
@@ -82,7 +83,7 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<League>> PutLeague(int id, League league)
         {
@@ -92,6 +93,10 @@ namespace StandingsApp.Controllers
             }
             try
             {
+                if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 league.Manager = null;
                 _context.Entry(league).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
@@ -120,16 +125,16 @@ namespace StandingsApp.Controllers
                 return Problem(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeleteLeague(int id)
         {
             try
             {
                 var league = await _context.Leagues.FirstOrDefaultAsync(u => u.Id == id);
-                if(league == null)
+                if(league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
                 {
-                    return NotFound();
+                    return StatusCode(403);
                 }
 
                 _context.Leagues.Remove(league);

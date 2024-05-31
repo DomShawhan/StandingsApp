@@ -33,8 +33,7 @@ export class LeagueCreateComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.league.manager = this.loggedInUser; // TODO: DO NOT PASS THE ENTIRE USER HERE
-    this.league.manager.password = '123';
+    this.league.manager = this.loggedInUser;
     this.league.managerId = this.loggedInUser.id;
   }
 }

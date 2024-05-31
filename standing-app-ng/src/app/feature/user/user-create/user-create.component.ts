@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../model/user';
+import { RegisterUser } from '../../../model/registerUser';
 import { BaseComponent } from '../../base/base.component';
 import { UserService } from '../../../service/user.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { SystemService } from '../../../service/system.service';
   styleUrl: './user-create.component.css'
 })
 export class UserCreateComponent extends BaseComponent {
-  user: User = new User();
+  user: RegisterUser = new RegisterUser();
   showPassword: boolean = true;
   buttonText: string = 'Save';
 
@@ -30,8 +30,7 @@ export class UserCreateComponent extends BaseComponent {
   save(): void {
     this.userSvc.createUser(this.user).subscribe({
       next: (resp) => {
-        this.user = resp;
-        this.router.navigateByUrl('/user/detail/' + this.user.id);
+        this.router.navigateByUrl('/user/detail/' +resp.id);
       },
       error: (err) => {
         console.log(err);

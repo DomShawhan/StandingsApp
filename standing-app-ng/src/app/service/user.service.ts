@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { RegisterUser } from '../model/registerUser';
 import { Observable } from 'rxjs';
 import { UserLogin } from '../model/userlogin';
 
@@ -20,7 +21,7 @@ export class UserService {
     return this.http.get(URL + `/${id}`) as Observable<User>;
   }
 
-  createUser(user: User): Observable<User> {
+  createUser(user: RegisterUser): Observable<User> {
     return this.http.post(URL + '/', user) as Observable<User>;
   }
 

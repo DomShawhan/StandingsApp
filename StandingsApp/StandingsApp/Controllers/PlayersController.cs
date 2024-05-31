@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using StandingsApp.Models;
@@ -66,6 +67,7 @@ namespace StandingsApp.Controllers
 
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<Player>> PutPlayer(int id, Player player)
         {
@@ -75,6 +77,20 @@ namespace StandingsApp.Controllers
             }
             try
             {
+                Team? team = await _context.Teams.Where(t => t.Id == player.TeamId).FirstOrDefaultAsync();
+                if (team == null)
+                {
+                    return StatusCode(403);
+                }
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null)
+                {
+                    return StatusCode(403);
+                }
+                if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 _context.Entry(player).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return player;
@@ -104,11 +120,26 @@ namespace StandingsApp.Controllers
 
         // POST: api/Players
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
             try
-            { 
+            {
+                Team? team = await _context.Teams.Where(t => t.Id == player.TeamId).FirstOrDefaultAsync();
+                if (team == null)
+                {
+                    return StatusCode(403);
+                }
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null)
+                {
+                    return StatusCode(403);
+                }
+                if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 _context.Players.Add(player);
                 await _context.SaveChangesAsync();
 
@@ -127,11 +158,26 @@ namespace StandingsApp.Controllers
         }
 
         // DELETE: api/Players/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeletePlayer(int id)
         {
             try 
-            { 
+            {
+                Team? team = await _context.Teams.Where(t => t.Id == id).FirstOrDefaultAsync();
+                if (team == null)
+                {
+                    return StatusCode(403);
+                }
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null)
+                {
+                    return StatusCode(403);
+                }
+                if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
                 var player = await _context.Players.FindAsync(id);
                 if (player == null)
                 {

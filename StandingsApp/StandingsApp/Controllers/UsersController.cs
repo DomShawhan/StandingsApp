@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -24,16 +25,16 @@ namespace StandingsApp.Controllers
         // Get all users
         // returns a list of users if successfull
         // GET: api/Users
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
             try
             {
-                /*if(User.FindFirst("Admin")?.Value != "True")
+                if(User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }*/
+                }
 
                 List<User> users = await _context.Users.ToListAsync();
                 List<UserDTO> usersDTO = new List<UserDTO>();
@@ -59,16 +60,16 @@ namespace StandingsApp.Controllers
         // Get user by id
         // returns a single user if successfull
         // GET: api/Users/5
-        //[Authorize]
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
             try
             {
-                /*if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+                if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }*/
+                }
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
                 if (user == null)
@@ -180,11 +181,10 @@ namespace StandingsApp.Controllers
 
         // Update a user
         // PUT: api/Users/5
-        //[Authorize]
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<UserDTO>> PutUser(int id, User user)
         {
-            Console.WriteLine(id + "   " + user.Id);
             if (id != user.Id)
             {
                 // Returns a 400 Bad Request
@@ -192,10 +192,10 @@ namespace StandingsApp.Controllers
             }
             try
             {
-               /* if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }*/
+                }
                 _context.Entry(user).State = EntityState.Modified;
                 _context.Entry(user).Property(u => u.Password).IsModified = false;
                 _context.Entry(user).Property(u => u.Salt).IsModified = false;
@@ -229,15 +229,16 @@ namespace StandingsApp.Controllers
         // delete a user
         // returns a 204 NoContent code if successfull
         // DELETE: api/Users/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeleteUser(int id)
         {
             try
             {
-                /*if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
+                if (User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);
-                }*/
+                }
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user == null)
                 {

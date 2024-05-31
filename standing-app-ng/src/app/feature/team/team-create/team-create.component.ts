@@ -31,7 +31,6 @@ export class TeamCreateComponent extends BaseComponent {
 
   save(): void {
     this.team.coachId = this.team.coach.id;
-    this.team.coach.password = '123';
     this.team.leagueId = this.team.league.id;
     console.log(this.team)
     this.teamSvc.createTeam(this.team).subscribe({

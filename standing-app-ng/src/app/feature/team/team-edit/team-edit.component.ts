@@ -61,7 +61,6 @@ export class TeamEditComponent extends BaseComponent {
 
   save(): void {
     this.team.coachId = this.team.coach.id;
-    this.team.coach.password = '123';
     this.team.leagueId = this.team.league.id;
     this.teamSvc.editTeam(this.team).subscribe({
       next: (resp) => {
