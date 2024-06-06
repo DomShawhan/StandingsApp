@@ -58,6 +58,9 @@ ADD City varchar(50),
 ADD State varchar(2),
 ADD Zip varchar(10);
 
+ALTER TABLE League
+ADD Status varchar(15) NOT NULL DEFAULT 'NEW';
+
 CREATE TABLE Player(
 	Id int PRIMARY KEY AUTO_INCREMENT,
     Firstname varchar(20) NOT NULL,

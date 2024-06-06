@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using StandingsApp.Models.EF;
 using StandingsApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using StandingsApp.Utilities;
 
 namespace StandingsApp.Controllers
 {
@@ -110,6 +111,10 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
+                }
                 team.Coach = null;
                 team.League = null;
                 await _context.Teams.AddAsync(team);
@@ -140,6 +145,10 @@ namespace StandingsApp.Controllers
                 if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
                 {
                     return StatusCode(403);
+                }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
                 }
                 team.Coach = null;
                 team.League = null;
@@ -176,15 +185,21 @@ namespace StandingsApp.Controllers
         {
             try
             {
+                var team = await _context.Teams.FirstOrDefaultAsync(u => u.Id == id);
+                if (team == null)
+                {
+                    return NotFound();
+                }
+
                 League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
                 if (league == null || User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
                 {
                     return StatusCode(403);
                 }
-                var team = await _context.Teams.FirstOrDefaultAsync(u => u.Id == id);
-                if (team == null)
+
+                if(league.Status != LeagueStatuses.NEW)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
 
                 _context.Teams.Remove(team);

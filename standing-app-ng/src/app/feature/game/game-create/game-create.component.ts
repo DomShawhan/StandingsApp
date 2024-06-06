@@ -47,6 +47,9 @@ export class GameCreateComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.route.params.subscribe({
       next: (parms) => {
         this.leagueId = parms['leagueid'];

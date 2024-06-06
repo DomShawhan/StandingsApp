@@ -30,6 +30,9 @@ export class GameEditComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.route.params.subscribe({
       next: (parms) => {
         this.gameId = parms['id'];

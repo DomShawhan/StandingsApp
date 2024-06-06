@@ -25,10 +25,16 @@ export class UserDetailComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.title = 'User-Detail';
     this.route.params.subscribe({
       next: (parms) => {
         this.userId = parms['id'];
+        if(!this.loggedInUser.admin && this.loggedInUser.id != this.userId) {
+          this.router.navigateByUrl('user/login');
+        }
         this.userSvc.getUserById(this.userId).subscribe({
           next: (resp) => {
             this.user = resp;

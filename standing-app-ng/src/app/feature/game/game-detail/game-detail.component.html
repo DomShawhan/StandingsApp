@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="game" class="container">
     <table class="table">
         <thead>
         <tbody>
@@ -46,7 +46,7 @@
         </tbody>
     </table>
 
-    <a routerLink="/game/edit/{{ game.id }}" *ngIf="game.status != 'COMPLETED'" class="btn btn-primary">Edit</a>
-    <a routerLink="/game/score/{{ game.id }}" *ngIf="game.status != 'COMPLETED'" class="btn btn-primary ms-2">Score</a>
-    <button class="btn btn-danger ms-2" (click)="delete(game.id)">Delete</button>
+    <a *ngIf="game.homeTeam.league.managerId == loggedInUser.id && game.homeTeam.league.status == 'NEW'" routerLink="/game/edit/{{ game.id }}" class="btn btn-primary">Edit</a>
+    <a routerLink="/game/score/{{ game.id }}" *ngIf="game.homeTeam.league.managerId == loggedInUser.id && game.homeTeam.league.status == 'FINALIZED' &&game.status != 'COMPLETED'" class="btn btn-primary ms-2">Score</a>
+    <button *ngIf="game.homeTeam.league.managerId == loggedInUser.id && game.homeTeam.league.status == 'NEW'" class="btn btn-danger ms-2" (click)="delete(game.id)">Delete</button>
 </div>

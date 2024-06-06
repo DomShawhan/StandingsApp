@@ -24,8 +24,5 @@ export class BaseComponent implements OnInit {
     this.loggedInUser = this.sysSvc.loggedInUser;
     this.userIsLoggedIn = this.loggedInUser.id != 0;
     this.userIsAdmin = this.loggedInUser.admin;
-    if(!this.userIsLoggedIn) {
-      this.router.navigateByUrl('user/login');
-    }
   }
 }

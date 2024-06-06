@@ -34,6 +34,10 @@ export class GameService {
     return this.http.post(URL + '/score/' + game.id, game) as Observable<Game>;
   }
 
+  rescheduleGame(game: Game): Observable<Game> {
+    return this.http.post(URL + '/rechedule/' + game.id, game) as Observable<Game>;
+  }
+
   editGame(game: Game): Observable<Game> {
     return this.http.put(URL + '/' + game.id, game) as Observable<Game>;
   }

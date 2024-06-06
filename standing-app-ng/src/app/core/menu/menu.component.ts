@@ -11,16 +11,20 @@ import { User } from '../../model/user';
 export class MenuComponent implements OnInit {
   menuItems: MenuItem[] = [];
   loggedInUser?: User = undefined;
+  loggedIn: boolean = false;
 
   constructor(
     private sysSvc: SystemService
   ){}
 
   ngOnInit(): void {
-    if(this.sysSvc.userLoggedIn()) {
+    this.loggedIn = this.sysSvc.userLoggedIn();
+    if(this.loggedIn) {
       this.loggedInUser = this.sysSvc.loggedInUser;
     }
-    this.menuItems.push(new MenuItem("Users", "user/list", "Users"));
+    if(this.loggedInUser?.admin == true) {
+      this.menuItems.push(new MenuItem("Users", "user/list", "Users"));
+    }
     this.menuItems.push(new MenuItem("Leagues", "league/list", "Leagues"));
   }
 }

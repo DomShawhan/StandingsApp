@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using StandingsApp.Models;
 using StandingsApp.Models.EF;
+using StandingsApp.Utilities;
 
 namespace StandingsApp.Controllers
 {
@@ -44,7 +45,9 @@ namespace StandingsApp.Controllers
         {
             try 
             { 
-                var player = await _context.Players.FindAsync(id);
+                var player = await _context.Players.Include(p => p.Team)
+                    .ThenInclude(t => t.League)
+                    .FirstOrDefaultAsync(p => p.Id == id);
 
                 if (player == null)
                 {
@@ -91,6 +94,12 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
+                }
+
+                player.Team = null;
                 _context.Entry(player).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return player;
@@ -140,6 +149,12 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
+
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
+                }
+                player.Team = null;
                 _context.Players.Add(player);
                 await _context.SaveChangesAsync();
 
@@ -177,6 +192,10 @@ namespace StandingsApp.Controllers
                 if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
                 {
                     return StatusCode(403);
+                }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
                 }
                 var player = await _context.Players.FindAsync(id);
                 if (player == null)

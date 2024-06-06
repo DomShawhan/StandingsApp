@@ -24,5 +24,7 @@ namespace StandingsApp.Models.EF
         public string Bats { get; set; }
 
         public string Throws { get; set; }
+
+        public virtual Team? Team { get; set; }
     }
 }

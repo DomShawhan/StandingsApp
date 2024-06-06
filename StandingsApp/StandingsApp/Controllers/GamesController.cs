@@ -152,6 +152,10 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
+                }
 
                 game.HomeTeam = null;
                 game.AwayTeam = null;
@@ -199,6 +203,10 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
+                if (league.Status != LeagueStatuses.FINALIZED)
+                {
+                    return BadRequest();
+                }
 
                 var gameInDb = await _context.Games.FirstOrDefaultAsync(g => g.Id == id);
                 if (gameInDb == null || gameInDb.Status == GameStatuses.COMPLETED)
@@ -219,6 +227,58 @@ namespace StandingsApp.Controllers
                 }
 
                 gameInDb.Status = GameStatuses.COMPLETED;
+                _context.Entry(gameInDb).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return gameInDb;
+            }
+            catch (MySqlException sqlex)
+            {
+                //returns 500 Internal Server Error
+                return Problem($"SQL Error: {sqlex.Message}");
+            }
+            catch (Exception ex)
+            {
+                //returns 500 Internal Server Error
+                return Problem(ex.Message);
+            }
+        }
+        [Authorize]
+        [HttpPost("reschedule/{id}")]
+        public async Task<ActionResult<Game>> PostGameReschedule(int id, [FromBody] Game game)
+        {
+            if (id != game.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                Team? team = await _context.Teams.Where(t => t.Id == game.HomeTeamId).FirstOrDefaultAsync();
+                if (team == null)
+                {
+                    return StatusCode(403);
+                }
+                League? league = await _context.Leagues.Where(l => l.Id == team.Id).FirstOrDefaultAsync();
+                if (league == null)
+                {
+                    return StatusCode(403);
+                }
+                if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
+                {
+                    return StatusCode(403);
+                }
+                if (league.Status != LeagueStatuses.FINALIZED)
+                {
+                    return BadRequest();
+                }
+
+                var gameInDb = await _context.Games.FirstOrDefaultAsync(g => g.Id == id);
+                if (gameInDb == null || gameInDb.Status == GameStatuses.COMPLETED)
+                {
+                    return NotFound();
+                }
+                gameInDb.Scheduled = game.Scheduled;
+
+                gameInDb.Status = GameStatuses.SCHEDULED;
                 _context.Entry(gameInDb).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return gameInDb;
@@ -257,6 +317,10 @@ namespace StandingsApp.Controllers
                 if (User.FindFirst("UserId")?.Value != team.CoachId.ToString() && User.FindFirst("UserId")?.Value != league.ManagerId.ToString())
                 {
                     return StatusCode(403);
+                }
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
                 }
 
                 _context.Entry(game).State = EntityState.Modified;
@@ -312,7 +376,10 @@ namespace StandingsApp.Controllers
                 {
                     return StatusCode(403);
                 }
-
+                if (league.Status != LeagueStatuses.NEW)
+                {
+                    return BadRequest();
+                }
 
                 _context.Games.Remove(game);
                 await _context.SaveChangesAsync();

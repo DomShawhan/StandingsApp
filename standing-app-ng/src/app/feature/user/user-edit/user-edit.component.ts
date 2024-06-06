@@ -28,9 +28,15 @@ export class UserEditComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.route.params.subscribe({
       next: (parms) => {
         this.userId = parms['id'];
+        if(this.userId != this.loggedInUser.id) {
+          this.router.navigateByUrl('league/list');
+        }
         this.userSvc.getUserById(this.userId).subscribe({
           next: (resp) => {
             this.user = new RegisterUser(resp.id, resp.username, resp.firstname, resp.lastname, resp.phone, resp.email, '', resp.admin);

@@ -48,6 +48,9 @@ export class TeamCreateComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.route.params.subscribe({
       next: (parms) => {
         this.team.leagueId = parms['leagueid'];

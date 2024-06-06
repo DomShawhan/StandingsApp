@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="player" class="container">
     <table class="table">
         <thead>
         <tbody>
@@ -24,7 +24,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a routerLink="/player/edit/{{ player.id }}" class="btn btn-primary">Edit</a>
-    <button class="btn btn-danger ms-2" (click)="delete(player.id)">Delete</button>
+    <a *ngIf="player.team.league.managerId == loggedInUser.id || player.team.coachId == loggedInUser.id" routerLink="/player/edit/{{ player.id }}" class="btn btn-primary">Edit</a>
+    <button *ngIf="player.team.league.managerId == loggedInUser.id || player.team.coachId == loggedInUser.id" class="btn btn-danger ms-2" (click)="delete(player.id)">Delete</button>
 </div>

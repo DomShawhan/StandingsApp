@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="player" class="container">
     <table>
         <tbody>
             <tr>
@@ -19,10 +19,10 @@
             </tr>
             <tr>
                 <td>
-                    <label for="lastname">Birthday Before: </label>
+                    <label for="birthday">Birthday Before: </label>
                 </td>
                 <td>
-                    <input type="date" id="lastname" [ngModel]="player.birthday | date:'yyyy-MM-dd'" (ngModelChange)="player.birthday  = $event">
+                    <input type="date" id="birthday" [ngModel]="player.birthday | date:'yyyy-MM-dd'" (ngModelChange)="player.birthday  = $event">
                 </td>
             </tr>
             <tr>

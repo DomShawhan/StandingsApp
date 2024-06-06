@@ -66,6 +66,7 @@ namespace StandingsApp.Controllers
         {
             try
             {
+                Console.WriteLine(User.FindFirst("Admin")?.Value);
                 if(User.FindFirst("UserId")?.Value != id.ToString() && User.FindFirst("Admin")?.Value != "True")
                 {
                     return StatusCode(403);

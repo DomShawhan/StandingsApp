@@ -6,6 +6,7 @@ export class League {
     birthdayBefore: Date;
     year: number;
     managerId: number;
+    status: string;
     manager: User;
 
     constructor(
@@ -14,6 +15,7 @@ export class League {
         birthdayBefore: Date = new Date,
         year: number = 0,
         managerId: number = 0,
+        status: string = '',
         manager: User = new User()
     ){
         this.id = id;
@@ -21,6 +23,7 @@ export class League {
         this.birthdayBefore = birthdayBefore;
         this.year = year;
         this.managerId = managerId;
+        this.status = status;
         this.manager = manager;
     }
 }

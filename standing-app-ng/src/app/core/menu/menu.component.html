@@ -15,7 +15,8 @@
           {{ loggedInUser.firstname }} {{ loggedInUser.lastname }} 
           <i *ngIf="loggedInUser.admin" class="bi bi-person-gear ms-1"></i>
         </a>
-        <a class="nav-link"routerLink="/user/login" title="{{ loggedInUser ? 'Logout': 'Login' }}">{{ loggedInUser ? 'Logout': 'Login' }}</a>
+        <a class="nav-link" routerLink="/user/login" title="{{ loggedIn ? 'Logout': 'Login' }}">{{ loggedIn ? 'Logout': 'Login' }}</a>
+        <a *ngIf="loggedIn" class="nav-link" routerLink="/user/create" title="Register">Register</a>
       </div>
     </div>
   </div>

@@ -22,7 +22,10 @@ export class UserListComponent extends BaseComponent {
   }
 
   override ngOnInit(): void {
-    super.ngOnInit()
+    super.ngOnInit();
+    if(!this.userIsLoggedIn && this.loggedInUser.admin) {
+      this.router.navigateByUrl('user/login');
+    }
     this.title = 'User List';
     this.userSvc.getAllUsers().subscribe({
       next: (resp) => {

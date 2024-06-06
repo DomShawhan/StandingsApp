@@ -33,6 +33,9 @@ export class LeagueCreateComponent extends BaseComponent {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if(!this.userIsLoggedIn) {
+      this.router.navigateByUrl('user/login');
+    }
     this.league.manager = this.loggedInUser;
     this.league.managerId = this.loggedInUser.id;
   }
